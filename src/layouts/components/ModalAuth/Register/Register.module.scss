@@ -1,0 +1,40 @@
+// Model
+
+.model-title {
+    font-weight: 600;
+    font-size: 3.6rem;
+}
+.input {
+    width: 100%;
+    margin-bottom: 16px;
+    label {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+    input {
+        padding: 12px 0;
+        font-size: 1.5rem;
+    }
+}
+.forgot-password {
+    color: rgba(22, 24, 35, 0.75);
+    font-weight: 600;
+    font-size: 12px;
+}
+.login-btn {
+    width: 100%;
+    margin: 10px 0;
+}
+.signup-box {
+    height: 64px;
+    border-top: 1px solid rgba(22, 24, 35, 0.12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+}
+.signup {
+    margin-left: 6px;
+    color: var(--primary);
+}

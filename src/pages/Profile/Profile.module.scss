@@ -1,0 +1,29 @@
+// Content
+.tab-list {
+    display: flex;
+}
+.tab-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    padding: 6px 0;
+    border-bottom: 3px solid rgb(240 240 240);
+    font-weight: 600;
+    font-size: 18px;
+    color: rgba(22, 24, 35, 0.5);
+    cursor: pointer;
+    svg {
+        margin-right: 6px;
+    }
+}
+.active {
+    color: black;
+    border-color: black;
+}
+
+// Video
+.video-list {
+    display: flex;
+    flex-wrap: wrap;
+}

@@ -1,0 +1,11 @@
+.model-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 483px;
+    max-height: 693px;
+    padding: 60px 40px 0;
+    background-color: var(--white);
+    border-radius: 8px;
+}

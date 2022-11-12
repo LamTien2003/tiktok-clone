@@ -1,0 +1,90 @@
+.search {
+    --search-width: 361px;
+    --search-border-radius: 92px;
+    --search-height: 46px;
+    --search-top-spacer: 9px;
+    --search-btn-width: 52px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    form {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 0 0 16px;
+        background: rgba(22, 24, 35, 0.06);
+        border-radius: var(--search-border-radius);
+        width: var(--search-width);
+        height: var(--search-height);
+        border: 1.5px solid transparent;
+        &:focus-within {
+            border-color: rgba(22, 24, 35, 0.2);
+        }
+        input {
+            // caret = dau' nhay' khi nhap input
+            caret-color: rgba(120, 16, 16, 0.863);
+            flex: 1;
+            height: 100%;
+            color: var(--black);
+            background: transparent;
+            font-weight: 400;
+            font-size: 1.6rem;
+        }
+        // Input khi khong co placeholder => dang duoc nhap
+        input:not(:placeholder-shown) ~ .search-btn {
+            color: rgba(22, 24, 35, 0.75);
+        }
+    }
+}
+.search-result {
+    width: var(--search-width);
+    .search-title {
+        padding: 5px 12px;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: rgba(22, 24, 35, 0.5);
+    }
+}
+
+.clear-btn,
+.loading-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: calc(var(--search-btn-width) + 12px);
+    font-size: 16px;
+    color: rgba(22, 24, 35, 0.34);
+}
+.loading-btn {
+    animation: spinner linear 1.2s;
+}
+@keyframes spinner {
+    from {
+        transform: translateY(-50%) rotate(0);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+.search-btn {
+    position: relative;
+    width: var(--search-btn-width);
+    height: 100%;
+    font-size: 2rem;
+    color: rgba(22, 24, 35, 0.34);
+    border-top-right-radius: var(--search-border-radius);
+    border-bottom-right-radius: var(--search-border-radius);
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+        cursor: pointer;
+    }
+    &::before {
+        position: absolute;
+        content: '';
+        left: 0;
+        top: var(--search-top-spacer);
+        width: 2px;
+        height: calc(var(--search-height) - var(--search-top-spacer) * 2);
+        background-color: rgba(22, 24, 35, 0.12);
+    }
+}

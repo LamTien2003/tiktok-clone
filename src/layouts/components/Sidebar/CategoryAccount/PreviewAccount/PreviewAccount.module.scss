@@ -1,0 +1,63 @@
+.wrapper {
+    min-width: 320px;
+    max-width: 100%;
+    padding: 20px;
+}
+// Header
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.image {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.button {
+    height: 34px;
+    min-width: 106px;
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+// Body
+.body {
+    margin: 16px 0;
+}
+.name {
+    display: flex;
+    align-items: center;
+    .check {
+        color: rgb(32, 213, 236);
+        font-size: 1.4rem;
+        margin-left: 6px;
+    }
+}
+.username {
+    font-size: 1.8rem;
+    line-height: 1.6rem;
+    font-weight: 600;
+}
+.name-description {
+    color: rgba(22, 24, 35, 0.5);
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+// Footer
+.follow-count,
+.like-count {
+    display: inline-block;
+    margin-right: 6px;
+    line-height: 20px;
+    font-weight: 700;
+    font-size: 17px;
+}
+.follow,
+.like {
+    display: inline-block;
+    line-height: 20px;
+    margin-right: 12px;
+    font-size: 17px;
+    color: rgba(22, 24, 35, 0.75);
+}

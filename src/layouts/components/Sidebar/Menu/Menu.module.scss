@@ -1,0 +1,19 @@
+.menu-item {
+    display: flex;
+    align-items: center;
+    margin-left: -8px;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 1.9rem;
+    font-weight: 600;
+    transition: background linear 0.3s;
+    .title {
+        margin-left: 12px;
+    }
+    &:hover {
+        background: rgba(22, 24, 35, 0.03);
+    }
+}
+.active {
+    color: var(--primary);
+}

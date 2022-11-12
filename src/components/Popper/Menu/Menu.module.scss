@@ -1,0 +1,48 @@
+.menu-list {
+    justify-content: flex-start;
+    .menu-item {
+        padding: 12px 12px;
+        margin: 0;
+        width: 100%;
+        justify-content: flex-start;
+        font-size: 1.6rem;
+        font-weight: 600;
+        line-height: 1.8rem;
+        border: none;
+        font-family: 'Fira Sans', sans-serif;
+    }
+    .separate {
+        border-top: 1px solid rgba(22, 24, 35, 0.12);
+    }
+}
+.menu-body {
+    overflow-y: overlay;
+}
+.menu-seemore {
+    width: 223px;
+}
+
+.menu-header {
+    position: relative;
+    flex-shrink: 0;
+    margin-top: -8px;
+    height: 50px;
+}
+.menu-header-icon {
+    width: 50px;
+    height: 100%;
+    background-color: transparent;
+    cursor: pointer;
+}
+.menu-header-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+//Custom seemore menu 1 cap
+.btn-seemore {
+    border: none;
+    padding: 4px 12px;
+}

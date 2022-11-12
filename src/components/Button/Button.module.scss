@@ -1,0 +1,67 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    background-color: white;
+    cursor: pointer;
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+    .icon {
+        width: 20px;
+        text-align: center;
+    }
+    // Nhung Button dung canh nhau se cach nhau 8px, button co class = wrapper
+    + .wrapper {
+        margin-left: 14px;
+    }
+}
+// nhung the icon nam ke` duoi' title va nhung the title nam ke` tren icon
+.title + .icon,
+.icon + .title {
+    margin-left: 8px;
+}
+
+// Button style
+.rounded {
+    border-radius: 999px;
+    color: rgba(22, 24, 35, 0.75);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+}
+.primary {
+    background-color: var(--primary);
+    color: var(--white);
+    &:hover {
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #fe2c55;
+    }
+}
+.outline {
+    color: var(--primary);
+    border-color: var(--primary);
+    &:hover {
+        background-color: rgba(254, 44, 85, 0.06);
+    }
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+    user-select: none;
+}
+
+// Button Size
+.small {
+    min-width: 90px;
+    padding: 6px 12px;
+}
+.large {
+    min-width: 148px;
+    padding: 14px 12px;
+}
