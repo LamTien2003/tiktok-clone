@@ -12,7 +12,7 @@ function useDebounce(value, delay) {
         return () => {
             clearTimeout(timeout);
         };
-    }, [value]);
+    }, [delay, value]);
     return debouncedValue;
 }
 export default useDebounce;

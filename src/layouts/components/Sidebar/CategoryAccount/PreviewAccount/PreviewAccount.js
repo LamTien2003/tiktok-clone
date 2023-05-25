@@ -1,9 +1,7 @@
-import PropTypes from 'prop-types';
 import styles from './PreviewAccount.module.scss';
 import classNames from 'classnames/bind';
 import Image from '@/components/Image';
 import Button from '@/components/Button';
-import { Fragment } from 'react';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const cx = classNames.bind(styles);

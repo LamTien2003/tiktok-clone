@@ -1,11 +1,9 @@
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import styles from './VideoSidebar.module.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCommentDots, faHeart, faLink, faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import Menu from '@/components/Popper/Menu';
-import { useState } from 'react';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 const cx = classNames.bind(styles);
 const menuData = [

@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import styles from './Video.module.scss';
 import { Link } from 'react-router-dom';
