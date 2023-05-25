@@ -28,7 +28,7 @@ function Video({ data }) {
                 setHover(false);
             }}
         >
-            <video ref={video} src={data.file_url} autoplay muted loop></video>
+            <video ref={video} src={data.file_url} autoPlay muted loop></video>
             <p className={cx('title')}>{data.description}</p>
             <div className={cx('view')}>
                 <FontAwesomeIcon icon={faPlay} />

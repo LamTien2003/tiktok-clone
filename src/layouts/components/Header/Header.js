@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,7 +13,6 @@ import { faCircleQuestion, faKeyboard, faMessage, faPaperPlane, faUser } from '@
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
-import ModalAuth from '@/layouts/components/ModalAuth';
 import config from '@/config';
 import styles from './Header.module.scss';
 import images from '@/assets/images';
@@ -22,71 +20,74 @@ import Button from '@/components/Button';
 import Menu from '@/components/Popper/Menu';
 import Search from './Search';
 import Image from '@/components/Image';
+import { useDispatch, useSelector } from 'react-redux';
+import { handleLogout, openModal } from '@/redux/authSlice';
+
 const cx = classNames.bind(styles);
 
-const menuData = [
-    {
-        icon: <FontAwesomeIcon icon={faLanguage} />,
-        title: 'English',
-        children: {
-            title: 'Language',
-            data: [
-                {
-                    code: 'en',
-                    title: 'English',
-                },
-                {
-                    code: 'vi',
-                    title: 'Việt Nam',
-                },
-            ],
-        },
-    },
-    {
-        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
-        title: 'Feedback and help',
-        to: '/feedback',
-    },
-    {
-        icon: <FontAwesomeIcon icon={faKeyboard} />,
-        title: 'Keyboard shortcuts',
-        href: 'https://fullstack.edu.vn/',
-    },
-];
-const currentUser = null;
-const menuCurrentUser = [
-    {
-        icon: <FontAwesomeIcon icon={faUser} />,
-        title: 'View profile',
-        to: '/profile',
-    },
-    {
-        icon: <FontAwesomeIcon icon={faCoins} />,
-        title: 'Get Coins',
-        to: '/coins',
-    },
-    {
-        icon: <FontAwesomeIcon icon={faGear} />,
-        title: 'Settings',
-        to: '/settings',
-    },
-    ...menuData,
-    {
-        icon: <FontAwesomeIcon icon={faRightFromBracket} />,
-        title: 'Log out',
-        to: '/logout',
-        separate: true,
-    },
-];
 function Header({ fullScreen }) {
+    const dispatch = useDispatch();
+    const currentUser = useSelector((state) => state.auth.user);
     let navigate = useNavigate();
-    const [openModal, setOpenModal] = useState(false);
-    const handleOpenModal = () => setOpenModal(true);
-    const handleCloseModal = () => {
-        setOpenModal(false);
-        navigate('/');
-    };
+    const handleOpenModal = () => dispatch(openModal());
 
+    const menuData = [
+        {
+            icon: <FontAwesomeIcon icon={faLanguage} />,
+            title: 'English',
+            children: {
+                title: 'Language',
+                data: [
+                    {
+                        code: 'en',
+                        title: 'English',
+                    },
+                    {
+                        code: 'vi',
+                        title: 'Việt Nam',
+                    },
+                ],
+            },
+        },
+        {
+            icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+            title: 'Feedback and help',
+            to: '/feedback',
+        },
+        {
+            icon: <FontAwesomeIcon icon={faKeyboard} />,
+            title: 'Keyboard shortcuts',
+            href: 'https://fullstack.edu.vn/',
+        },
+    ];
+
+    const menuCurrentUser = [
+        {
+            icon: <FontAwesomeIcon icon={faUser} />,
+            title: 'View profile',
+            to: '/profile',
+        },
+        {
+            icon: <FontAwesomeIcon icon={faCoins} />,
+            title: 'Get Coins',
+            to: '/coins',
+        },
+        {
+            icon: <FontAwesomeIcon icon={faGear} />,
+            title: 'Settings',
+            to: '/settings',
+        },
+        ...menuData,
+        {
+            icon: <FontAwesomeIcon icon={faRightFromBracket} />,
+            title: 'Log out',
+            onClick: () => {
+                dispatch(handleLogout());
+                navigate('/');
+            },
+            separate: true,
+        },
+    ];
     return (
         <>
             <header className={cx('wrapper')}>
@@ -117,7 +118,7 @@ function Header({ fullScreen }) {
                         ) : (
                             <>
                                 <Button leftIcon={<FontAwesomeIcon icon={faPlus} />}>Upload</Button>
-                                <Button to="login" onClick={handleOpenModal} primary>
+                                <Button onClick={handleOpenModal} primary>
                                     Log in
                                 </Button>
                             </>
@@ -125,9 +126,12 @@ function Header({ fullScreen }) {
 
                         <Menu items={currentUser ? menuCurrentUser : menuData} className={cx('menu-seemore')}>
                             {currentUser ? (
-                                <button className={cx('action-avatar')}>
-                                    <Image src={currentUser.avatar} alt={currentUser.name} />
-                                </button>
+                                <Link to={`/@${currentUser.nickname}`} className={cx('action-avatar')}>
+                                    <Image
+                                        src={currentUser.avatar}
+                                        alt={`${currentUser.first_name} ${currentUser.last_name}`}
+                                    />
+                                </Link>
                             ) : (
                                 <button className={cx('seemore')}>
                                     <FontAwesomeIcon icon={faEllipsisVertical} />
@@ -137,12 +141,6 @@ function Header({ fullScreen }) {
                     </div>
                 </div>
             </header>
-            <ModalAuth
-                open={openModal}
-                onClose={handleCloseModal}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            />
         </>
     );
 }

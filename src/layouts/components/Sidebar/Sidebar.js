@@ -1,7 +1,6 @@
 import styles from './Sidebar.module.scss';
 import classNames from 'classnames/bind';
 import config from '@/config';
-import * as request from '@/utils/request.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCropSimple, faHouse, faMusic, faUserGroup, faVideo } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
@@ -9,6 +8,7 @@ import { useEffect, useState } from 'react';
 import Menu, { MenuItem } from './Menu';
 import CategoryAccount, { AccountItem } from './CategoryAccount';
 import Button from '@/components/Button';
+import userApi from '@/api/userApi';
 const cx = classNames.bind(styles);
 
 function Sidebar({ size }) {
@@ -18,13 +18,12 @@ function Sidebar({ size }) {
     useEffect(() => {
         const fetchApi = async () => {
             try {
-                // Hardcode truoc api, thay vao` sau
-                const res = await request.get(`users/suggested`, {
-                    params: {
-                        page: 1,
-                        per_page: 5,
-                    },
-                });
+                const params = {
+                    page: 1,
+                    per_page: 5,
+                };
+
+                const res = await userApi.getSuggestUser(params);
                 setSuggestAccount(res.data);
             } catch {
                 console.log('Lỗi call API');

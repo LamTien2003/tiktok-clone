@@ -41,17 +41,12 @@ function Menu({ children, items = [], seeMore, hideOnClick = false, className })
     const renderItems = () => {
         return currentMenuList.data.map((item, index) => {
             const isParent = !!item.children;
-            return (
-                <MenuItem
-                    key={index}
-                    data={item}
-                    onClick={() => {
-                        if (isParent) {
-                            handleClickParent(item.children);
-                        }
-                    }}
-                />
-            );
+            const handleParentClick = () => {
+                if (isParent) {
+                    handleClickParent(item.children);
+                }
+            };
+            return <MenuItem key={index} data={item} onClick={item.onClick || handleParentClick} />;
         });
     };
 

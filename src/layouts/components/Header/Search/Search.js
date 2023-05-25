@@ -1,15 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDebounce } from '@/hooks';
+
 import TippyHeadless from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
-import * as request from '@/utils/request.js';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
+
 import { PopperWrapper } from '@/components/Popper';
 import AccountItem from '@/components/AccountItem';
+import userApi from '@/api/userApi';
 
 const cx = classNames.bind(styles);
 
@@ -44,12 +47,11 @@ function Search() {
 
         const fetchApi = async () => {
             try {
-                const res = await request.get(`users/search`, {
-                    params: {
-                        q: debouncedValue,
-                        type: 'less',
-                    },
-                });
+                const params = {
+                    q: debouncedValue,
+                    type: 'less',
+                };
+                const res = await userApi.getSearchUser(params);
                 setSearchResult(res.data);
                 setLoading(false);
             } catch {

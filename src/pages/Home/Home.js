@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import styles from './Home.module.scss';
-import * as request from '@/utils/request.js';
 
 import Video from '@/components/Video/Video';
+import videoApi from '@/api/videoApi';
+
 import { useEffect, useState } from 'react';
 
 const cx = classNames.bind(styles);
@@ -14,12 +15,11 @@ function Home() {
     useEffect(() => {
         const fetchApi = async () => {
             try {
-                const res = await request.get(`videos`, {
-                    params: {
-                        type: 'for-you',
-                        page: 1,
-                    },
-                });
+                const params = {
+                    type: 'for-you',
+                    page: 1,
+                };
+                const res = await videoApi.getVideoForYou(params);
                 setVideos(res.data);
             } catch {
                 console.log('Lỗi call API VIDEO');

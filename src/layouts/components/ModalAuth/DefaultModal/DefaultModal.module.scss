@@ -1,0 +1,21 @@
+.signup-box {
+    height: 64px;
+    border-top: 1px solid rgba(22, 24, 35, 0.12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+}
+.signup {
+    margin-left: 6px;
+    color: var(--primary);
+}
+.model-box {
+    .modal-item {
+        margin: 16px 0;
+        span:nth-child(2) {
+            flex: 1;
+            text-align: center;
+        }
+    }
+}
